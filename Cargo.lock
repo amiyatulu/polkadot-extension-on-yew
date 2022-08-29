@@ -428,6 +428,7 @@ name = "polkadot-extension-on-yew"
 version = "0.1.0"
 dependencies = [
  "gloo 0.8.0",
+ "gloo-timers",
  "js-sys",
  "serde",
  "serde_json",
