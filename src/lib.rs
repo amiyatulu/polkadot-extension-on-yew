@@ -11,10 +11,10 @@ mod router;
 use serde::{self, Serialize, Deserialize};
 
 
-// #[derive(Serialize, Deserialize, Clone)]
-// pub struct Accounts {
-//     pub address: String,
-// }
+#[derive(Serialize, Deserialize, Clone)]
+pub struct Accounts {
+    pub address: String,
+}
 
 #[styled_component(App)]
 pub fn app() -> Html {
@@ -31,8 +31,9 @@ pub fn app() -> Html {
             wasm_bindgen_futures::spawn_local(async move {
                 let response = wasm_bindgen_futures::JsFuture::from(data2).await.unwrap();
                 log!(response.clone());
-                // let account: Accounts = response.into_serde().unwrap();
-                // log!(account.address)
+                let account: Vec<Accounts> = response.into_serde().unwrap();
+                let value = account[0].address.clone();
+                log!(value);
 
             });
         });
